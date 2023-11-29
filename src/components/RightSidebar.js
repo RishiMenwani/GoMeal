@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState } from "react";
 import background from "@/../../public/Images/RightSidebar/balance-background.png";
 import {
   Box,
@@ -8,11 +8,26 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Slider,
   TextField,
   Typography,
 } from "@mui/material";
 
 const RightSidebar = () => {
+  const [sliderValue, setSliderValue] = useState(0);
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+  };
+
+  const handleSliderComplete = () => {
+    // Perform your action when the slider is slid fully
+    if (sliderValue === 100) {
+      // Your action here
+      console.log("Slider slid fully!");
+    }
+  };
+
   const orderMenu = ["Pepperoni Pizza", "Cheese Burger", "Jain Pizza"];
   return (
     <div className="flex flex-col px-3 py-5">
@@ -184,9 +199,60 @@ const RightSidebar = () => {
           </span>
         </div>
       </div>
-      <Button variant="outlined" className="mt-4">
-        Contained
-      </Button>
+      <Box
+        sx={{
+          border: 1,
+          height: "60px",
+          borderRadius: 2,
+          borderColor: "#F8B602",
+          backgroundColor: "#F5F5F5",
+          display: "inline-flex",
+          boxShadow: 1,
+          m: 2,
+        }}
+      >
+        <Image
+          src={"/Images/RightSidebar/coupon1.svg"}
+          width={60}
+          height={60}
+          className="ml-16"
+        />
+        <Box
+          sx={{
+            fontSize: "21",
+            mt: "12px",
+            ml: 3,
+          }}
+        >
+          Have a Coupon Code
+          <Button sx={{ display: "inline-flex" }}>
+            <Image
+              src={"/Images/RightSidebar/next-arrow.svg"}
+              width={20}
+              height={60}
+            />
+          </Button>
+        </Box>
+      </Box>
+      <div
+        style={{
+          width: "auto",
+          height: "100px",
+          padding: "20px",
+          position: "relative",
+        }}
+      >
+        <Typography gutterBottom>Slide to Checkout!</Typography>
+        <Slider
+          value={sliderValue}
+          onChange={handleSliderChange}
+          onChangeCommitted={handleSliderComplete}
+          aria-labelledby="continuous-slider"
+          step={50}
+          marks
+          sx={{ color: "#F8B602", width: "100%", height: "100%" }}
+        />
+      </div>
     </div>
   );
 };
