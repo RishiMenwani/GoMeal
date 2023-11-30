@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Paper, TextField, Button } from "@mui/material";
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
 import Login from "@/components/Login";
 
 const LoginPage = () => {
