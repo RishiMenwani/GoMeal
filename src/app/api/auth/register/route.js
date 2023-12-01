@@ -11,9 +11,10 @@ export const POST = async (req) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectToDatabase();
-    const user = prisma.user.create({
+    const user = await prisma.user.create({
       data: { email, name, hashedPassword },
     });
+    console.log("__user", user);
     return NextResponse.json({ user }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: "Server Error" }, { status: 501 });
