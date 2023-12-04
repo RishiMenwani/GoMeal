@@ -15,7 +15,7 @@ const LoginPage = () => {
           quality={100}
         />
       </div>
-      <div className="ml-80 mt-20">
+      <div>
         <Login />
       </div>
     </Container>

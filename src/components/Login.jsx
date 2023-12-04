@@ -1,48 +1,53 @@
+"use client"
 import { Button } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 import { Google, GitHub, Twitter } from "@mui/icons-material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter()
   return (
-    <div className="relative py-4 sm:max-w-xl sm:mx-auto  ml-70 mt-24">
+    <div className="relative py-4 mx-auto max-w-md mt-24">
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-orange-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-      <div className="relative backdrop-blur opacity-80 px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 p-5">
+      <div className="relative backdrop-blur opacity-80 px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-10">
         <div className="">
           <div>
-            <h1 className="text-2xl font-semibold">Login</h1>
+            <h1 className="text-xl font-semibold mb-4 sm:text-2xl">
+              Login
+            </h1>
           </div>
           <div className="divide-y divide-gray-200">
-            <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-              <div className="relative">
+            <div className="py-2 text-base leading-6 space-y-2 text-gray-700 sm:text-sm sm:leading-5">
+              <div className="relative mb-2">
                 <input
-                  autocomplete="off"
+                  autoComplete="off"
                   id="email"
                   name="email"
                   type="text"
-                  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                  className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
                   placeholder="Email address"
                 />
                 <label
-                  for="email"
-                  className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                  htmlFor="email"
+                  className="absolute left-0 -top-2.5 text-gray-600 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-xs"
                 >
                   Email Address
                 </label>
               </div>
-              <div className="relative">
+              <div className="relative mb-2">
                 <input
-                  autocomplete="off"
+                  autoComplete="off"
                   id="password"
                   name="password"
                   type="password"
-                  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                  className="peer placeholder-transparent h-8 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
                   placeholder="Password"
                 />
                 <label
-                  for="password"
-                  className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                  htmlFor="password"
+                  className="absolute left-0 -top-2.5 text-gray-600 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-1.5 transition-all peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-xs"
                 >
                   Password
                 </label>
@@ -50,60 +55,62 @@ const Login = () => {
               <div className="relative flex justify-end">
                 <Button
                   variant="outlined"
-                  className="bg-yellow-500 text-zinc-800 rounded-md px-2 py-1"
+                  className="bg-yellow-500 text-zinc-800 rounded-md px-3 py-1 text-sm"
+                  onClick={()=>{ router.push("/")}}
                 >
                   Submit
-                </Button>
+                </Button> 
+                
               </div>
-              <div className="flex justify-between items-center mt-2">
-                <div className="text-gray-700 text-sm">
+              <div className="flex flex-col sm:flex-row justify-between items-center mt-2">
+                <div className="text-gray-700 text-xs mb-1 sm:mb-0">
                   <Link href="#" underline="hover">
                     Forgot password?
                   </Link>
                 </div>
-                <div className="text-gray-700 text-sm">
+                <div className="text-gray-700 text-xs">
                   <span>Don't have an account? </span>
-                  <Link href="#" underline="hover">
+                  <Link href="/sign-up" underline="hover">
                     Sign up
                   </Link>
                 </div>
               </div>
-              <div className="mt-4 space-y-4">
+              <div className="mt-3 space-y-2">
                 <Button
                   variant="contained"
-                  className="bg-white text-black rounded-md px-4 py-2 w-full"
+                  className="bg-white text-black rounded-md px-3 py-1 flex items-center justify-center"
                 >
                   <Image
                     src={"/Images/Login/google.svg"}
-                    width={20}
-                    height={20}
-                    className="mr-2"
+                    width={16}
+                    height={16}
+                    className="mr-1"
                   />
-                  Login With Google
+                  SignIn With Google
                 </Button>
                 <Button
                   variant="contained"
-                  className="bg-black text-white rounded-md px-4 py-2 w-full"
+                  className="bg-black text-white rounded-md px-3 py-1 flex items-center justify-center"
                 >
                   <Image
                     src={"/Images/Login/github.png"}
-                    width={20}
-                    height={20}
-                    className="mr-2"
+                    width={16}
+                    height={16}
+                    className="mr-1"
                   />
-                  Login With Github
+                 SignIn With Github
                 </Button>
                 <Button
                   variant="contained"
-                  className="bg-blue-500 text-white rounded-md px-4 py-2 w-full"
+                  className="bg-blue-500 text-white rounded-md px-3 py-1 flex items-center justify-center"
                 >
                   <Image
                     src={"/Images/Login/twitter.svg"}
-                    width={20}
-                    height={20}
-                    className="mr-2"
+                    width={16}
+                    height={16}
+                    className="mr-1"
                   />
-                  Login With Twitter
+                  SignIn With Twitter
                 </Button>
               </div>
             </div>

@@ -2,7 +2,7 @@ import { connectToDatabase } from "@/helpers/serverConnect";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const authOptions = {
   providers: [
